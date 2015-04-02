@@ -1,0 +1,81 @@
+<head>
+  <title>ToDo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+<div class="container">
+	<div class="header">
+	  <nav>
+	    <ul class="nav nav-pills pull-right">
+	      <li role="presentation" class="active"><a href="#">Home</a></li>
+	      <li role="presentation"><a href="#">About</a></li>
+	      <li role="presentation"><a href="#">Contact</a></li>
+	      <li role="presentation">{{> loginButtons}}</li>
+	    </ul>
+	  </nav>
+	  <h3 class="text-muted">Widget Queue</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<header>
+				<h1>Widgets ({{incompleteTasks}})</h1>
+				{{#if currentUser}}
+				<form name="widgetform"  class="new-widget">
+					
+					<div class="form-group">
+						<label for="widget">Widget title</label>
+						<input class="form-control" type="text" name="widgetName" id="widget" placeholder="add new widget"/>
+					</div>
+
+					<div class="form-group">
+						<label for="client">Client</label>
+						<input class="form-control" type="text" id="client" name="client" placeholder="client"/>
+					</div>
+					<button type="submit">Submit</button>
+				</form>
+				{{/if}}
+			</header>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td>Widget Name</td>
+							<td>Client Name</td>
+							<td>Created at</td>
+							<td>Owner</td>
+							<td>Done</td>
+							<td>Delete</td>
+						</tr>
+					</thead>
+	
+					<tbody>
+						{{#each tasks}}
+							{{> task}}
+						{{/each}}
+					</tbody>
+				</table>
+			<label class="hide-completed">
+			  <input type="checkbox" checked="{{hideCompleted}}" />
+			  Hide Completed Tasks
+			</label>
+			</div>
+		</div>
+	</div>
+	{{> notifications}}
+
+</body>
+
+<template name="task">
+	<tr class="{{#if checked}} checked{{/if}}">
+		<td> {{text}} </td>
+		<td>{{client}}</td>
+		<td>{{createdAt}}</td>
+		<td><strong>{{username}}</strong></td>
+		<td><input type="checkbox" checked="{{checked}}" class="toggle-checked" /></td>
+		<td><button class="delete">&times;</button></td>
+	</tr>
+</template>
