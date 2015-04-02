@@ -1,5 +1,7 @@
 Tasks = new Mongo.Collection("tasks");
-
+Router.route('/', function(){
+  this.render('list')
+})
 if (Meteor.isClient) {
   Meteor.startup(function () {
       _.extend(Notifications.defaultOptions, {

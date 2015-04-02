@@ -11,3 +11,4 @@ accounts-ui
 accounts-password
 gfk:notifications
 twbs:bootstrap
+iron:router

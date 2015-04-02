@@ -1,5 +1,5 @@
 <head>
-  <title>ToDo</title>
+  <title>Widget Queue</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
@@ -70,7 +70,7 @@
 </body>
 
 <template name="task">
-	<tr class="{{#if checked}} checked{{/if}}">
+	<tr class="{{#if checked}} success checked{{/if}}">
 		<td> {{text}} </td>
 		<td>{{client}}</td>
 		<td>{{createdAt}}</td>
@@ -78,4 +78,8 @@
 		<td><input type="checkbox" checked="{{checked}}" class="toggle-checked" /></td>
 		<td><button class="delete">&times;</button></td>
 	</tr>
+</template>
+
+<template name="widget">
+	
 </template>
