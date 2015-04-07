@@ -8,7 +8,7 @@ if (Meteor.isClient) {
           timeout: 5000
       });
   })
-;  Template.body.helpers({
+;  Template.widgetTable.helpers({
     tasks: function () {
       if (Session.get("hideCompleted")) {
         // If hide completed is checked, filter tasks
@@ -26,7 +26,7 @@ if (Meteor.isClient) {
     }
   });
   
-  Template.body.events({
+  Template.widgetAdd.events({
     "submit .new-widget": function(event){
       var text = event.target.widgetName.value; 
       var client = event.target.client.value; 

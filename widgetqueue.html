@@ -5,17 +5,40 @@
 
 <body>
 <div class="container">
-	<div class="header">
-	  <nav>
-	    <ul class="nav nav-pills pull-right">
-	      <li role="presentation" class="active"><a href="#">Home</a></li>
-	      <li role="presentation"><a href="#">About</a></li>
-	      <li role="presentation"><a href="#">Contact</a></li>
-	      <li role="presentation">{{> loginButtons}}</li>
-	    </ul>
-	  </nav>
-	  <h3 class="text-muted">Widget Queue</h3>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Widget Queue</a>
+	    </div>
+	    <div>
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Widgets</a></li>
+	        <li><a href="#">Users</a></li>
+	        <li><a href="#">Add Widgets</a></li>  
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	{{> widgetAdd}}
+	{{> widgetTable}}
+
 	</div>
+	{{> notifications}}
+
+</body>
+
+<template name="task">
+	<tr class="{{#if checked}} success checked{{/if}}">
+		<td> {{text}} </td>
+		<td>{{client}}</td>
+		<td>{{createdAt}}</td>
+		<td><strong>{{username}}</strong></td>
+		<td><input type="checkbox" checked="{{checked}}" class="toggle-checked" /></td>
+		<td><button class="delete">&times;</button></td>
+	</tr>
+</template>
+
+<template name="widgetAdd">
 	<div class="row">
 		<div class="col-md-12">
 			<header>
@@ -38,6 +61,9 @@
 			</header>
 		</div>
 	</div>
+</template>
+
+<template name="widgetTable">
 	<div class="row">
 			<div class="col-md-12">
 				<table class="table table-striped">
@@ -62,24 +88,6 @@
 			  <input type="checkbox" checked="{{hideCompleted}}" />
 			  Hide Completed Tasks
 			</label>
-			</div>
 		</div>
 	</div>
-	{{> notifications}}
-
-</body>
-
-<template name="task">
-	<tr class="{{#if checked}} success checked{{/if}}">
-		<td> {{text}} </td>
-		<td>{{client}}</td>
-		<td>{{createdAt}}</td>
-		<td><strong>{{username}}</strong></td>
-		<td><input type="checkbox" checked="{{checked}}" class="toggle-checked" /></td>
-		<td><button class="delete">&times;</button></td>
-	</tr>
-</template>
-
-<template name="widget">
-	
 </template>
